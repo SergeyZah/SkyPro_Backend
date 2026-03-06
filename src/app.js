@@ -1,6 +1,9 @@
 const express = require('express');
+const dotenv = require('dotenv');
 
-const { PORT = 3000, API_URL = 'http://localhost' } = process.env;
+dotenv.config()
+
+const { PORT = 3005, API_URL = 'http://127.0.0.1' } = process.env;
 
 const app = express();
 
@@ -10,5 +13,5 @@ app.get('/', (request, response) => {
 });
 
 app.listen(PORT, () => {
-    console.log('Ссылка на сервер: ${API_URL}:${PORT}');
+    console.log(`Ссылка на сервер: ${API_URL}:${PORT}`);
 });
