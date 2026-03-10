@@ -9,7 +9,8 @@ const getUser = (request, response) => {
 };
 
 const createUser = (request, response) => {
-  //Create new user
+  response.status(201);
+  response.send(request.body);
 };
 
 const updateUser = (request, response) => {
