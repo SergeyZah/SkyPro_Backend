@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRouter = require("./routes/users");
+const bookRouter = require("./routes/books");
 const loggerOne = require('./middlewares/loggerOne');
 const loggerTwo = require('./middlewares/loggerTwo');
 
@@ -34,6 +35,7 @@ app.post("/", (request, response) => {
 });
 
 app.use(userRouter);
+app.use(bookRouter);
 
 app.listen(PORT, () => {
   console.log(`Ссылка на сервер: ${API_URL}:${PORT}`);
