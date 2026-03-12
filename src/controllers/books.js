@@ -1,21 +1,21 @@
 const Book = require("../models/book");
 
 const getBooks = (request, response) => {
-  return User.find({}).then((data) => {
+  return Book.find({}).then((data) => {
     response.status(200).send(data);
   }).catch(e => response.status(500).send(e.message));
 };
 
 const getBook = (request, response) => {
   const { book_id } = request.params;
-  return User.findById(book_id).then((user) => {
-    response.status(200).send(user);
+  return Book.findById(book_id).then((book) => {
+    response.status(200).send(book);
   }).catch(e => response.status(500).send(e.message));
 };
 
 const createBook = (request, response) => {
-  return Book.create({ ...request.body }).then((user) => {
-    response.status(201).send(user);
+  return Book.create({ ...request.body }).then((book) => {
+    response.status(201).send(book);
   }).catch(e => response.status(500).send(e.message));
 };
 
