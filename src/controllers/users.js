@@ -1,3 +1,5 @@
+const User = require("../models/user");
+
 const getUsers = (request, response) => {
   //Get all users
 };
@@ -9,8 +11,9 @@ const getUser = (request, response) => {
 };
 
 const createUser = (request, response) => {
-  response.status(201);
-  response.send(request.body);
+  return User.create({ ...request.body }).then((user) => {
+    response.status(201).send(user);
+  });
 };
 
 const updateUser = (request, response) => {
