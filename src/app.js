@@ -1,12 +1,24 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const mogoose = require("mongoose");
 const cors = require("cors");
 const userRouter = require("./routes/users");
 
 dotenv.config();
 
 const { PORT = 3005, API_URL = "http://127.0.0.1" } = process.env;
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/test")
+  .catch((error) => handleError(error));
+
+// Or:
+try {
+  await mongoose.connect("mongodb://127.0.0.1:27017/test");
+} catch (error) {
+  handleError(error);
+}
 
 app.use(cors());
 const app = express();
